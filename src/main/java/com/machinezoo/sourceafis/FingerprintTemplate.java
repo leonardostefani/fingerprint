@@ -211,7 +211,7 @@ public class FingerprintTemplate {
 			throw new IllegalArgumentException("Invalid ISO 19794-2 template", e);
 		}
 	}
-	@SneakyThrows DoubleMap readImage(byte[] serialized) {
+	@SneakyThrows protected DoubleMap readImage(byte[] serialized) {
 		BufferedImage buffered = ImageIO.read(new ByteArrayInputStream(serialized));
 		if (buffered == null)
 			throw new IllegalArgumentException("Unsupported image format");
