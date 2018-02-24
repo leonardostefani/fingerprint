@@ -5,7 +5,12 @@ import java.util.*;
 import gnu.trove.map.hash.*;
 
 public class MatchBuffer {
-	private static final ThreadLocal<MatchBuffer> local = ThreadLocal.withInitial(MatchBuffer::new);
+	private static final ThreadLocal<MatchBuffer> local = new ThreadLocal<MatchBuffer>() {
+		@Override
+		protected MatchBuffer initialValue() {
+			return new MatchBuffer();
+		}
+	};
 	private FingerprintContext context;
 	private FingerprintMinutia[] probeMinutiae;
 	private NeighborEdge[][] probeEdges;
